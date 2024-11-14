@@ -2,20 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Custom white scrollbar for Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 30px;            /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgb(52, 105, 136);   /* Background of the scrollbar track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #28da95; /* White color for the scrollbar thumb */
+    border-radius: 100px;    /* Rounded corners for the scrollbar */
+    border: 2px solid #132c52; /* Optional border to create a gap */
+  }
+  
+  /* Scrollbar styling for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #25cfd4 #6a169b;
+  }
+  
+  /* Hide scrollbar for all elements */
+.scroll-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.scroll-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+@keyframes scrollX {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.scroll-animate {
+  animation: scrollX 10s linear infinite;
 }
