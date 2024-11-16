@@ -2,15 +2,16 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { usePathname } from 'next/navigation'
+import Login from '@/app/login/page'
 
 const Navbar = () => {
   const pathName = usePathname()
   const [showNavbar, setShowNavbar] = useState(false);
-  const ExpresNavbar = ["/", "/generate"].includes(pathName)
+  const ExpresNavbar = ["/", "/generate" , "/login" , "/signup" , "/template" , "/marketplace" , "/discover" , "/learn" , "/pricing"].includes(pathName)
   return (<>
  {ExpresNavbar && (
 
-     <header className=" top-0 left-0 w-full bg-white z-10 p-4">
+     <header className=" top-0 left-0 w-full bg-white z-10 px-4 ">
        <div className="flex justify-between items-center container mx-auto">
          {/* Logo */}
          <div className="flex items-center gap-4">
@@ -35,11 +36,11 @@ const Navbar = () => {
          >
            <div className="flex gap-8 items-center">
              <ul className="flex flex-col md:flex-row gap-4">
-               <Link href={"/"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Templates</li></Link>
-               <Link href={"/"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Marketplace</li></Link>
-               <Link href={"/"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Discover</li></Link>
-               <Link href={"/"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Pricing</li></Link>
-               <Link href={"/"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Learn</li></Link>
+               <Link href={"/template"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Templates</li></Link>
+               <Link href={"/marketplace"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Marketplace</li></Link>
+               <Link href={"/discover"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Discover</li></Link>
+               <Link href={"/pricing"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Pricing</li></Link>
+               <Link href={"/learn"}><li className='hover:bg-gray-200 px-3 py-1 rounded-lg'>Learn</li></Link>
              </ul>
            </div>
            
@@ -48,9 +49,11 @@ const Navbar = () => {
              <Link href={"/login"}>
                <button className="login bg-[#eff0ec] px-3 py-1 rounded-lg font-semibold">Log in</button>
              </Link>
-             <button className="signup bg-gray-800 hover:bg-gray-700 text-white px-3 py-1 rounded-full font-[400]">
+             <Link href={"/signup"}>
+             <button className="signup bg-gray-800 hover:bg-gray-700 text-white px-3 py-1 rounded-full font-semibold text-md">
                Signup Free
              </button>
+             </Link>
            </div>
          </nav>
        </div>

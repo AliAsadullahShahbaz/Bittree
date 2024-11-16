@@ -8,7 +8,25 @@ export async function POST(request) {
         const db = client.db('bittree');
         const collection = db.collection('loginuser');
 
+        if(!body.lastname || !body.firstname || !body.email || !body.about){
+            return NextResponse.json({
+                success: false,
+                error: true,
+                message: "Something is missing."
+            }, { status: 400 });
+        }
+
+        if(body.lastname === null || body.firstname=== null ||body.email ===null || body.about=== null){
+            return NextResponse.json({
+                success: false,
+                error: true,
+                message: "Something is missing in null."
+            }, { status: 400 });
+        } 
+
+        
         const result = await collection.insertOne(body);
+
 
         return NextResponse.json({
             success: true,
